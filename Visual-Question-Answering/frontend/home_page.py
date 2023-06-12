@@ -17,7 +17,7 @@ if st.button("compute"):
             'image_bytes': base64.b64encode(image.getvalue()).decode('utf-8'),
             'question': ques
         }
-        res= requests.post('http://backend:80/inputs', data=form_data)
+        res= requests.post('http://backend:80/inputs', data=form_data, timeout=40)
         print(res.json())
 
         ans=st.write(f"Predicted_answer is ***{res.json()}***")
